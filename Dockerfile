@@ -26,13 +26,13 @@ RUN apt-get update && \
 WORKDIR /home/dev
 
 # pico-sdk と pico-examples をクローン
-RUN git clone -b master https://github.com/raspberrypi/pico-sdk.git && \
-    git clone -b master https://github.com/raspberrypi/pico-examples.git && \
-    cd pico-sdk && \
+RUN git clone -b master https://github.com/raspberrypi/pico-sdk.git /opt/pico-sdk && \
+    #git clone -b master https://github.com/raspberrypi/pico-examples.git /opt/pico-sdk && \
+    cd /opt/pico-sdk && \
     git submodule update --init
 
 # 環境変数設定（SDKパス）
-ENV PICO_SDK_PATH=/home/dev/pico-sdk
+ENV PICO_SDK_PATH=/opt/pico-sdk
 
 # 初期ディレクトリ設定
 WORKDIR /home/dev
